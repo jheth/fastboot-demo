@@ -1,0 +1,6 @@
+<div class="authorize">
+  <h4>Enter Heroku Authorization Key</h4>
+  {{input value=apiKey size=50 required="required" class="form-control"}}
+  <br>
+  <button {{action "authorize" apiKey}} class="btn btn-primary">Authorize</button>
+</div>

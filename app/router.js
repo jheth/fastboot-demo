@@ -7,6 +7,11 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('authorize');
+  this.route('apps', function() {
+    this.route('create');
+    this.route('show', {path: '/:id'});
+  });
 });
 
 export default Router;

@@ -1,0 +1,46 @@
+<div class="action-row">
+  {{#link-to 'apps'}} <span class="glyphicon glyphicon-chevron-left"></span> {{/link-to}}
+  <strong class="white">{{model.name}}</strong>
+</div>
+<div class="details-container container">
+  <div class="row">
+    <div class="col-sm-3">Name</div>
+    <div class="col-sm-8">{{model.name}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">Buildpack</div>
+    <div class="col-sm-8">{{model.buildpackProvidedDescription}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">Region</div>
+    <div class="col-sm-8">{{model.region.name}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">Stack</div>
+    <div class="col-sm-8">{{model.stack.name}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">Git URL</div>
+    <div class="col-sm-8">{{model.gitUrl}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">Web URL</div>
+    <div class="col-sm-8"><a href={{model.webUrl}} target="_blank">{{model.webUrl}}</a></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">Repo Size</div>
+    <div class="col-sm-8">{{model.repoSize}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">Slug Size</div>
+    <div class="col-sm-8">{{model.slugSize}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">Created At</div>
+    <div class="col-sm-8">{{model.createdAt}}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">Updated At</div>
+    <div class="col-sm-8">{{model.updatedAt}}</div>
+  </div>
+</div>
