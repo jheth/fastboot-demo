@@ -3,21 +3,33 @@ import { inject as service } from "@ember/service";
 
 export default Route.extend({
   flashMessages: service(),
+  fastboot: service(),
 
   beforeModel: function() {
-    let matches = document.cookie.match(/apiKey=([^;]*)/);
-    if (matches == null) {
-      this.transitionTo('authorize');
+    if (this.get('fastboot.isFastBoot')) {
+      let key = this.get('fastboot.request.cookies.apiKey');
+      if (!key) {
+        this.replaceWith('authorize');
+      }
+    } else {
+      let matches = document.cookie.match(/apiKey=([^;]*)/);
+      if (matches == null) {
+        this.transitionTo('authorize');
+      }
     }
   },
+
   model: function() {
     return this.store.findAll('app');
   },
   actions: {
     error: function(error) {
-      document.cookie = 'apiKey=;';
-      alert(error.message);
-      this.transitionTo('authorize');
+      if (!this.get('fastboot.isFastBoot')) {
+        document.cookie = 'apiKey=;';
+
+        this.get('flashMessages').warning(error.message);
+        this.transitionTo('authorize');
+      }
     },
 
     destroyApp: function(app) {
