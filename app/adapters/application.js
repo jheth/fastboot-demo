@@ -1,8 +1,9 @@
 import DS from 'ember-data';
 import { computed } from "@ember/object";
 import { inject } from "@ember/service";
+import CachedShoe   from 'ember-cached-shoe'
 
-export default DS.RESTAdapter.extend({
+export default DS.RESTAdapter.extend(CachedShoe, {
   fastboot: inject(),
 
   host: 'https://api.heroku.com',
